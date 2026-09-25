@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
+    <title>Charles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<main class="card">
+
+    <div class="profile">
+        <img src="pfp.png" alt="Charles" class="pfp">
+        <h1>Charles</h1>
+        <p>@liecharmmms</p>
+    </div>
+
+    <div class="links">
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/charlesmarkcus.macaraig"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="link-card">
+
+            <div class="icon facebook">
+                <img src="https://cdn.simpleicons.org/facebook/ffffff" alt="Facebook">
+            </div>
+
+            <div class="link-text">
+                <strong>Facebook</strong>
+                <small>Charles Macaraig</small>
+            </div>
+
+            <span class="arrow">›</span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/ch4rmm._/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="link-card">
+
+            <div class="icon instagram">
+                <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram">
+            </div>
+
+            <div class="link-text">
+                <strong>Instagram</strong>
+                <small>@ch4rmm._</small>
+            </div>
+
+            <span class="arrow">›</span>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@liecharmms/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="link-card">
+
+            <div class="icon tiktok">
+                <img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok">
+            </div>
+
+            <div class="link-text">
+                <strong>TikTok</strong>
+                <small>@liecharmms</small>
+            </div>
+
+            <span class="arrow">›</span>
+        </a>
+
+        <!-- Mobile Legends -->
+        <a href="#"
+           class="link-card"
+           onclick="copyML(); return false;">
+
+            <div class="icon ml-icon">
+                <img src="ml.png" alt="Mobile Legends">
+            </div>
+
+            <div class="link-text">
+                <strong>Mobile Legends</strong>
+                <small>Tap to copy ID</small>
+            </div>
+
+            <span class="arrow">›</span>
+        </a>
+
+        <!-- GCash -->
+        <button class="link-card" onclick="openGcash()">
+
+            <div class="icon gcash-icon">
+                <img src="gcash-com-logo.png" alt="GCash">
+            </div>
+
+            <div class="link-text">
+                <strong>GCash</strong>
+                <small>Tap to view QR & number</small>
+            </div>
+
+            <span class="arrow">›</span>
+
+        </button>
+
+    </div>
+
+    <div class="controls">
+
+        <button
+            class="control-btn"
+            id="musicBtn"
+            onclick="toggleMusic()"
+            title="Mute Music">
+            🔊
+        </button>
+
+        <button
+            class="control-btn"
+            id="themeBtn"
+            onclick="toggleTheme()"
+            title="Light Mode">
+            ☀️
+        </button>
+
+    </div>
+
+</main>
+
+<!-- GCash Modal -->
+<div id="gcashModal" class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-btn" onclick="closeGcash()">×</button>
+
+        <div class="gcash-header">
+            <h2>GCash</h2>
+            <p>Scan the QR code to send money</p>
+        </div>
+
+        <div class="qr-container">
+            <img src="gcash-qr.png" alt="GCash QR Code">
+        </div>
+
+        <div class="gcash-number">
+
+            <span id="gcashNumber">09955217181</span>
+
+            <button onclick="copyGcash()">
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="toast">ID copied!</div>
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+
+</body>
+</html>

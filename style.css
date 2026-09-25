@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #050505;
+    --card: rgba(18, 18, 20, 0.78);
+    --text: #ffffff;
+    --secondary: #888888;
+    --border: rgba(255, 255, 255, 0.1);
+    --button: rgba(255, 255, 255, 0.055);
+    --button-hover: rgba(255, 255, 255, 0.1);
+}
+
+body.light {
+    --bg: #f2f2f5;
+    --card: rgba(255, 255, 255, 0.82);
+    --text: #111111;
+    --secondary: #666666;
+    --border: rgba(0, 0, 0, 0.1);
+    --button: rgba(0, 0, 0, 0.045);
+    --button-hover: rgba(0, 0, 0, 0.08);
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 20px;
+    transition: background 0.35s ease, color 0.35s ease;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(120, 80, 255, 0.18), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(0, 200, 255, 0.12), transparent 35%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body.light .background {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(120, 80, 255, 0.12), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(0, 180, 255, 0.1), transparent 35%);
+}
+
+.card {
+    width: 430px;
+    max-width: 100%;
+    padding: 35px 25px 25px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    transition: background 0.35s ease, border 0.35s ease;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.pfp {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--text);
+    padding: 3px;
+    background: #111;
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.12);
+}
+
+.profile h1 {
+    margin-top: 15px;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.profile p {
+    margin-top: 5px;
+    color: var(--secondary);
+    font-size: 14px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.link-card {
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--button);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    font-family: inherit;
+    text-align: left;
+}
+
+button.link-card {
+    appearance: none;
+}
+
+.link-card:hover {
+    transform: translateY(-3px);
+    background: var(--button-hover);
+}
+
+.link-card:active {
+    transform: scale(0.98);
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    overflow: hidden;
+}
+
+.icon img {
+    width: 29px;
+    height: 29px;
+    object-fit: contain;
+}
+
+.instagram {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.gcash-icon {
+    background: #007dff;
+    padding: 7px;
+}
+
+.gcash-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.link-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.link-text strong {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.link-text small {
+    color: var(--secondary);
+    font-size: 12px;
+}
+
+.arrow {
+    color: var(--secondary);
+    font-size: 27px;
+    font-weight: 300;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    border: 1px solid var(--border);
+    background: var(--button);
+    color: var(--text);
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s ease;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    background: var(--button-hover);
+}
+
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 80px);
+    background: var(--text);
+    color: var(--bg);
+    padding: 11px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 2000;
+}
+
+#toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: 0.25s ease;
+    z-index: 1000;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-content {
+    position: relative;
+    width: 360px;
+    max-width: 100%;
+    padding: 28px 24px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    transform: scale(0.9) translateY(15px);
+    transition: 0.25s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--button);
+    color: var(--text);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.gcash-header {
+    margin-bottom: 20px;
+}
+
+.gcash-logo {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 10px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #007dff;
+    padding: 6px;
+}
+
+.gcash-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.gcash-header h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.gcash-header p {
+    color: var(--secondary);
+    font-size: 12px;
+}
+
+.qr-container {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto 18px;
+    padding: 10px;
+    background: white;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.gcash-number {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 7px 7px 15px;
+    background: var(--button);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.gcash-number span {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.gcash-number button {
+    border: 0;
+    padding: 9px 13px;
+    border-radius: 10px;
+    background: #007dff;
+    color: white;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.gcash-number button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.gcash-note {
+    margin-top: 9px;
+    color: var(--secondary);
+    font-size: 11px;
+}
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px;
+        align-items: flex-start;
+        padding-top: 25px;
+    }
+
+    .card {
+        padding: 28px 16px 20px;
+        border-radius: 24px;
+    }
+
+    .profile {
+        margin-bottom: 20px;
+    }
+
+    .pfp {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile h1 {
+        font-size: 24px;
+    }
+
+    .profile p {
+        font-size: 13px;
+    }
+
+    .link-card {
+        min-height: 64px;
+        padding: 8px 12px;
+        gap: 12px;
+    }
+
+    .icon {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+    }
+
+    .link-text strong {
+        font-size: 14px;
+    }
+
+    .link-text small {
+        font-size: 11px;
+    }
+
+    .modal-content {
+        width: 340px;
+        padding: 25px 18px 20px;
+    }
+
+    .qr-container {
+        width: 220px;
+        height: 220px;
+    }
+}
